@@ -1,0 +1,29 @@
+.Movieframe { 
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:  8px 8px 6px 7px #323232;
+    position: relative;
+    z-index: 0;
+
+    .app-title{ 
+        background: #EDEDED;
+        color: #000000;
+        height: 4rem;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .app-content {
+        color: white;
+        background: #171717;
+        padding-top: 1.2rem;
+        padding-bottom: 1.2rem;
+    }
+}

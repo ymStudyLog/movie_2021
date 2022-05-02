@@ -1,0 +1,18 @@
+.home-container {
+    width: 100%;
+    height: 100vh;
+    
+}
+
+.home-content-input {
+    display: flex;
+}
+
+#home-input{
+    height: 60px;
+}
+
+.home-button-text-icon {
+    display: flex;
+    align-items: center;
+}

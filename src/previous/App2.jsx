@@ -6,9 +6,9 @@ import Arrowswiper from "./Arrowswiper";
 import "./App.scss";
 
 
-const App = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
+const App2 = () => {
+  const [isLoading, setIsLoading] = useState(true);   //-> 로딩 state 관리할 리덕스로 따로 뺄거임.
+  const [movies, setMovies] = useState([]); //-> 이것도 따로 뺄건데 일단 지금 DB에 어떻게 데이터들 가져와서 저장할지 고민 크롤링? 그거 어떻게 하는건데
 
   const getMovies = async () => {
     const {
@@ -45,4 +45,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default App2;

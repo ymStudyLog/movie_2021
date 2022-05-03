@@ -1,7 +1,11 @@
 import styled, { css } from "styled-components";
 import myColor from "../lib/styles/myColor";
 
-/* 중앙 정렬되는 기본 div 박스 - width, height props 처리 */
+/* 
+ * screen 기준 중앙에 위치하는 기본 div 박스 
+ * props.width = width
+ * props.height = height 
+ */
 
 const StyledDiv = styled.div`
   display: flex;

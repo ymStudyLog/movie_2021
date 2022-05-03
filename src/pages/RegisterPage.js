@@ -1,10 +1,12 @@
-import AuthTemplate from "../Components/auth/AuthTemplate";
-import AuthForm from "../Components/auth/AuthForm";
+import AuthTemplate from "../components/auth/AuthTemplate";
+import RegisterForm from '../containers/RegisterForm';
+
+/* 회원가입 페이지 */
 
 const RegisterPage = () => {
     return(
         <AuthTemplate>
-            <AuthForm type="register" />
+            <RegisterForm />
         </AuthTemplate>
     );
 };

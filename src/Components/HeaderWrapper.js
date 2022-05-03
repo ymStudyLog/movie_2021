@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-/* Header 파트 차지할 div 박스 */
+/* 
+ * screen 맨 위에 위치 고정된 header 부분 
+ */
 
 const StyledHeader = styled.div`
   position: relative;

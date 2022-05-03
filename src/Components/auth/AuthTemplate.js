@@ -15,11 +15,10 @@ const AuthTemplateContainer = styled.div`
 `;
 
 const AuthTemplateSample = styled(StyledBox)`
-  width: 30%;
+  width: 70vh;
   height: calc(100vh - 5rem);
+  margin: 0 auto;
   padding: 1rem;
-  position: absolute;
-  left: 35%;
   display: flex;
   justify-content: center;
   background-color: black;

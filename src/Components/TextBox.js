@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 
-/* 스타일링된 텍스트 박스 & Bold 처리된 텍스트 박스 */
+/* 
+ * 스타일링된 텍스트 박스 & font-weight : Bold 처리된 텍스트 박스 
+ * props.size = font-size
+ * props.margin = margin
+ */
 
 const StyledP = styled.p`
   text-align: center;

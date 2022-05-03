@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
 import myColor from "../lib/styles/myColor";
 
+/* 기본 회색 버튼 컴포넌트 - font-size props 처리 */
+
 const StyledButton = styled.button`
   border: none;
   border-radius: 4px;
@@ -23,11 +25,11 @@ const StyledButton = styled.button`
       }
     `}
 
-      ${props =>
-        props.size && 
-        css`
-            font-size: ${props.size}rem;
-        `}
+  ${(props) =>
+    props.size &&
+    css`
+      font-size: ${props.size}rem;
+    `}
 `;
 
 const Button = (props) => <StyledButton {...props} />;

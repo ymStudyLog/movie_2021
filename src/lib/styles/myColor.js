@@ -1,3 +1,5 @@
+/* 애플리케이션에서 사용할 기본 컬러 */
+
 const myColor = {
   mainRed: ["#E50914", "#CD2C2C"],
   mainBlack: "#221f1f",

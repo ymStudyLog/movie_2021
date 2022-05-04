@@ -1,28 +1,20 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { RiNetflixFill, RiArrowRightSLine } from "react-icons/ri";
-import Button from "../components/Button";
-import HeaderWrapper from "../components/HeaderWrapper";
-import StyledBox from "../components/StyledBox";
-import TextBox, { BoldTextBox } from "../components/TextBox";
-import Input from "../components/Input";
+import Button from "../components/common/Button";
+import HeaderWrapper from "../components/common/HeaderWrapper";
+import StyledBox from "../components/common/StyledBox";
+import TextBox, { BoldTextBox } from "../components/common/TextBox";
+import Input from "../components/common/Input";
 import myColor from "../lib/styles/myColor";
-import "../styles/homepage.css";
-
-const Header = styled(StyledBox)`
-  justify-content: space-between;
-`;
-
-const BodyWrapper = styled(StyledBox)`
-  flex-direction: column;
-  margin: 7rem auto;
-`;
+import { useRef } from 'react';
 
 /* 기본 Home 페이지 - 로그인 이전 */
-
 const HomePage = () => {
+  const inputEl = useRef();
+
   return (
-    <div className="home-container">
+    <div style={{ width:'100%', height:'100vh' }}>
       <HeaderWrapper>
         <Header width={90}>
           <RiNetflixFill color={myColor.mainRed[0]} size={40} />
@@ -47,10 +39,11 @@ const HomePage = () => {
             시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일
             주소를 입력하세요.
           </TextBox>
-          <form className="home-content-input" method="post" action="">
+          <form style={{ display:'flex', textAlign:'center' }}>
             <Input
-              name="username"
-              autoComplete="username"
+              ref={inputEl}
+              name="username_home"
+              autoComplete="username_home"
               placeholder="이메일 주소"
               white
               size={60}
@@ -58,7 +51,7 @@ const HomePage = () => {
             />
             <Button red size={1.6}>
               <Link to="/register">
-                <div className="home-button-text-icon">
+                <div style={{ display:'flex', alignItems:'center' }}>
                   시작하기 <RiArrowRightSLine />
                 </div>
               </Link>
@@ -69,5 +62,14 @@ const HomePage = () => {
     </div>
   );
 };
+
+const Header = styled(StyledBox)`
+  justify-content: space-between;
+`;
+
+const BodyWrapper = styled(StyledBox)`
+  flex-direction: column;
+  margin: 7rem auto;
+`;
 
 export default HomePage;

@@ -1,36 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import TextBox, { BoldTextBox } from "../TextBox";
-import Button from "../Button";
-import Input from "../Input";
-
-const AuthFormContainer = styled.div`
-  width: 70%;
-`;
-
-const AuthFormSample = styled.div`
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem 0;
-`;
-
-const Footer = styled.div`
-  margin-top: 2.5rem;
-  padding: 0 auto;
-`;
-
-const ErrorMessage = styled.div`
-  color: orange;
-  text-align: center;
-  font-size: 0.725rem;
-  margin-top: 0.8rem;
-`;
+import TextBox, { BoldTextBox } from "../common/TextBox";
+import Button from "../common/Button";
+import Input from "../common/Input";
 
 /*
  * 회원가입/로그인 폼 컴포넌트
@@ -109,5 +81,33 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
     </AuthFormContainer>
   );
 };
+
+const AuthFormContainer = styled.div`
+  width: 70%;
+`;
+
+const AuthFormSample = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+`;
+
+const Footer = styled.div`
+  margin-top: 2.5rem;
+  padding: 0 auto;
+`;
+
+const ErrorMessage = styled.div`
+  color: orange;
+  text-align: center;
+  font-size: 0.725rem;
+  margin-top: 0.8rem;
+`;
 
 export default AuthForm;

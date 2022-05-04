@@ -1,17 +1,30 @@
-import "./Moviemain.scss";
+import styled from "styled-components";
 import PropTypes from "prop-types";
+
+const MovieContainer = styled.div`
+  position: absolute;
+  height: 100vh;
+`;
+
+const StyledImg = styled.img`
+  float: left;
+`;
+
+const StyledList = styled.ul`
+  list-style: none;
+`;
 
 const Moviemain = ({ title, year, summary, poster, genres }) => {
   return (
-    <div className="movie">
-      <img src={poster} alt={title} title={title} />
-      <ul>
+    <MovieContainer>
+      <StyledImg src={poster} alt={title} title={title} />
+      <StyledList>
         <li>{title}</li>
         <li>{year}</li>
         <li>{summary}</li>
         <li>{genres}</li>
-      </ul>
-    </div>
+      </StyledList>
+    </MovieContainer>
   );
 };
 
@@ -22,5 +35,5 @@ Moviemain.propTypes = {
   poster: PropTypes.string,
   genres: PropTypes.arrayOf(PropTypes.string),
 };
-/* isRequired 빼고 값이 넘어오지 않을때 어떻게 할건지 조건문 작성하기 */
+
 export default Moviemain;

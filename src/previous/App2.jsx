@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Movieframe from "./Movieframe";
 import Movievideo from "./Movievideo";
-import Arrowswiper from "./Arrowswiper";
+import Arrowswiper from "../components/Arrowswiper";
 import "./App.scss";
 
 

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import myColor from "../lib/styles/myColor";
+import myColor from "../../lib/styles/myColor";
 
 /*
  * 기본 스타일링된 회색 배경 인풋

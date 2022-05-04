@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import HeaderWrapper from "../HeaderWrapper";
-import StyledBox from "../StyledBox";
+import HeaderWrapper from "../common/HeaderWrapper";
+import StyledBox from "../common/StyledBox";
 import { RiNetflixFill } from "react-icons/ri";
 import myColor from "../../lib/styles/myColor";
 import { Link } from "react-router-dom";

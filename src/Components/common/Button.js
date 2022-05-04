@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import myColor from "../lib/styles/myColor";
+import myColor from "../../lib/styles/myColor";
 
 /* 
  * 기본 회색 버튼 컴포넌트 

@@ -4,6 +4,39 @@ import TextBox, { BoldTextBox } from "../common/TextBox";
 import Button from "../common/Button";
 import Input from "../common/Input";
 
+const AuthFormContainer = styled.div`
+  width: 70%;
+`;
+
+const AuthFormSample = styled.div`
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0;
+`;
+
+const Footer = styled.div`
+  margin-top: 2.5rem;
+  padding: 0 auto;
+`;
+
+const ErrorMessage = styled.div`
+  color: orange;
+  text-align: center;
+  font-size: 0.725rem;
+  margin-top: 0.8rem;
+`;
+
+const AuthFormInput = styled(Input)`
+  size: 40;
+  height: 55px;
+`;
+
 /*
  * 회원가입/로그인 폼 컴포넌트
  * type을 props로 받아 회원가입/로그인 폼을 렌더링
@@ -22,33 +55,27 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
         <BoldTextBox size={30}>{text}</BoldTextBox>
 
         <StyledForm onSubmit={onSubmit}>
-          <Input
+          <AuthFormInput
             name="username"
             autoComplete="username"
             placeholder="이메일 주소"
-            size={40}
-            height={55}
             onChange={onChange}
             value={form.username}
           />
-          <Input
+          <AuthFormInput
             name="password"
             autoComplete="password"
             type="password"
             placeholder="비밀번호"
-            size={40}
-            height={55}
             onChange={onChange}
             value={form.password}
           />
           {type === "register" && (
-            <Input
+            <AuthFormInput
               name="passwordConfirm"
               autoComplete="passwordConfirm"
               type="password"
               placeholder="비밀번호 확인"
-              size={40}
-              height={55}
               onChange={onChange}
               value={form.passwordConfirm}
             />
@@ -82,32 +109,6 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   );
 };
 
-const AuthFormContainer = styled.div`
-  width: 70%;
-`;
 
-const AuthFormSample = styled.div`
-  margin-top: 1rem;
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 1.5rem 0;
-`;
-
-const Footer = styled.div`
-  margin-top: 2.5rem;
-  padding: 0 auto;
-`;
-
-const ErrorMessage = styled.div`
-  color: orange;
-  text-align: center;
-  font-size: 0.725rem;
-  margin-top: 0.8rem;
-`;
 
 export default AuthForm;

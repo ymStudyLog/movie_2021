@@ -1,28 +1,21 @@
 import styled from "styled-components";
 
-/*
- * 화면 맨 위에 fixed된 header부분
+/* 
+ * 화면 맨 위에 fixed된 header부분 
  */
+
 const StyledHeader = styled.div`
-  position: fixed;
-  top: 0;
+  position: relative;
   left: 0;
+  top: 0;
   width: 100%;
   height: 5rem;
   background-color: transparent;
-  text-align: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 0.5rem;
 `;
-
-/* header 공간을 차지해줄 빈 div */
-
-const EmptySpace = styled.div`
-  height: 5rem;
-`;
-
-export const Spacer = (props) => <EmptySpace {...props}/>;
 
 const HeaderWrapper = (props) => <StyledHeader {...props} />;
 

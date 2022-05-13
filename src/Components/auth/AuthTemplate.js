@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import HeaderWrapper from "../common/HeaderWrapper";
-import StyledBox from "../common/StyledBox";
+import HeaderWrapper, { Spacer } from "../common/HeaderWrapper";
 import { RiNetflixFill } from "react-icons/ri";
 import myColor from "../../lib/styles/myColor";
 import { Link } from "react-router-dom";
@@ -9,24 +8,26 @@ import { Link } from "react-router-dom";
  * 회원가입/로그인 페이지 레이아웃 컴포넌트
  */
 
-const AuthTemplateContainer = styled.div`
-  width: 100%;
+const Template = styled.div`
+  max-width: 450px;
   height: 100vh;
-`;
-
-const AuthTemplateSample = styled(StyledBox)`
-  width: 70vh;
-  height: calc(100vh - 5rem);
-  margin: 0 auto;
-  padding: 1rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: black;
+  color: ${myColor.mainWhite};
+`;
+
+const TemplateWrapper = styled.div`
+  max-width: 520px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 35px;
 `;
 
 const AuthTemplate = ({ children }) => {
   return (
-    <AuthTemplateContainer>
+    <>
       <HeaderWrapper>
         <div>
           <Link to="/">
@@ -35,8 +36,13 @@ const AuthTemplate = ({ children }) => {
         </div>
       </HeaderWrapper>
 
-      <AuthTemplateSample>{children}</AuthTemplateSample>
-    </AuthTemplateContainer>
+      <div style={{ height: "100vh", width: "100%" }}>
+        <TemplateWrapper>
+          <Spacer />
+          <Template>{children}</Template>
+        </TemplateWrapper>
+      </div>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import myColor from "../../lib/styles/myColor";
+import myColor from "../lib/styles/myColor";
 
 /* 
  * screen 기준 중앙에 위치하는 기본 div 박스 

@@ -7,7 +7,7 @@ import MoviePage from "./pages/MoviePage";
 
 const App = () => {
   return (
-    <div>
+    <div className="routeHome">
       <Route component={HomePage} path={['/@:username','/']} exact />
       <Route component={LoginPage} path="/login" />
       <Route component={RegisterPage} path="/register" />

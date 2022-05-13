@@ -1,6 +1,5 @@
 import HeaderWrapper from "../components/common/HeaderWrapper";
 import Button from "../components/common/Button";
-import StyledBox from "../components/common/StyledBox";
 import myColor from "../lib/styles/myColor";
 import styled from "styled-components";
 import { RiNetflixFill } from "react-icons/ri";
@@ -9,8 +8,26 @@ import MovieForm from "../containers/MovieForm";
 import { logout } from "../modules/user";
 import { useDispatch } from "react-redux";
 
-const Header = styled(StyledBox)`
+const Header = styled.div`
   justify-content: space-between;
+
+  display: flex;
+  align-items: center;
+  margin: auto;
+  padding: 0.25rem 0;
+  color: ${myColor.mainWhite};
+
+  ${(props) =>
+    props.width &&
+    css`
+      width: ${props.width}%;
+    `}
+
+  ${(props) =>
+    props.height &&
+    css`
+      height: ${props.height}vh;
+    `}
 `;
 
 const MoviePage = () => {

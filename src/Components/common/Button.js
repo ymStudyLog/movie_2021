@@ -14,6 +14,7 @@ const StyledButton = styled.button`
   outline: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  z-index:10;
 
   background: ${myColor.mainGray[7]};
   &:hover {

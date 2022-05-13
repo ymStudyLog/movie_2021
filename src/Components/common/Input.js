@@ -40,7 +40,7 @@ const StyledInput = styled.input`
     ${(props) =>
     props.height &&
     css`
-      height: ${props.height}px;
+      height: ${props.height}rem;
     `}
 `;
 

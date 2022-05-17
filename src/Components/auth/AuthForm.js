@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import TextBox, { BoldTextBox } from "../common/TextBox";
 import Button from "../common/Button";
-import Input from "../common/Input";
+import styled, { css } from "styled-components";
+import myColor from "../../lib/styles/myColor";
 
 const AuthFormContainer = styled.div`
   width: 70%;
@@ -32,10 +31,75 @@ const ErrorMessage = styled.div`
   margin-top: 0.8rem;
 `;
 
+const TextBox = styled.p`
+  text-align: center;
+  
+  ${(props) =>
+    props.size &&
+    css`
+      font-size: ${props.size}px;
+    `}
+
+  ${props =>
+    props.margin && 
+    css`
+      margin: 1rem;  
+    `}
+`;
+
+const BoldTextBox = styled(TextBox)`
+  font-weight: bold;
+`;
+
+/*
+ * 기본 스타일링된 회색 배경 인풋
+ * props.white = background-color
+ * props.size = size(width)
+ * props.height = height
+ */
+
+const Input = styled.input`
+  text-align: left;
+  background-color: ${myColor.mainGray[8]};
+  color: ${myColor.mainWhite};
+  font-size: 15px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+  }
+
+  & + & {
+    margin-top: 1rem;
+  }
+
+  ${(props) =>
+    props.white &&
+    css`
+      background-color: ${myColor.mainWhite};
+    `}
+
+  ${(props) =>
+    props.size &&
+    css`
+      size: ${props.size};
+    `}
+    
+    ${(props) =>
+    props.height &&
+    css`
+      height: ${props.height}rem;
+    `}
+`;
+
 const AuthFormInput = styled(Input)`
   size: 40;
   height: 55px;
 `;
+
+/* ------------------------------------ */
 
 /*
  * 회원가입/로그인 폼 컴포넌트

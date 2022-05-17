@@ -1,3 +1,4 @@
+/* 사진이랑 타이틀만 보여지고 그다음에 호버링이나 클릭시 디테일 보여지게 수정하기 */
 import styled from "styled-components";
 import PropTypes from "prop-types";
 

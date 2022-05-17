@@ -1,38 +1,16 @@
-import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import axios from 'axios';
 import { logout } from "../modules/user";
-import Arrowswiper from "../components/movie/Arrowswiper";
 import HeaderWrapper, { Spacer } from "../components/common/HeaderWrapper";
 import Button from "../components/common/Button";
 import myColor from "../lib/styles/myColor";
 import { RiNetflixFill } from "react-icons/ri";
 
-const MoviePage = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
-
-  const getMovies = async () => {
-    const {
-      data: {
-        data: { movies },
-      },
-    } = await axios.get(
-      "https://yts-proxy.now.sh/list_movies.json?sort_by=rating"
-      );
-      setMovies(movies);
-      setIsLoading(false);
-    };
-    
-    useEffect(() => {
-      getMovies();
-    }, []);
-    
-    const dispatch = useDispatch();
-    const onLogout = () => {
-      dispatch(logout());
-    }
+const UserPage = () => {
+  const dispatch = useDispatch();
+  const onLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <div>
@@ -58,10 +36,10 @@ const MoviePage = () => {
         </div>
       </HeaderWrapper>
       <Spacer />
-      
-      <Arrowswiper movies={movies} isLoading={isLoading} />
+
+      <div>찜한 목록 보여주기</div>
     </div>
   );
 };
 
-export default MoviePage;
+export default UserPage;

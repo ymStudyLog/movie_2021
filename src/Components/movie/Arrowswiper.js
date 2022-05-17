@@ -4,43 +4,42 @@ import "swiper/components/navigation/navigation.min.css";
 import SwiperCore, { Navigation } from "swiper";
 import styled from "styled-components";
 import Moviemain from "./Moviemain";
-import myColor from "../lib/styles/myColor";
+import myColor from "../../lib/styles/myColor";
 
-const MoviesContainer = styled.div`
-  height: 100vh;
+const Wrapper = styled.div`
+  width: 100%;
+  height: 66vh;
+  margin-top: 4rem;
+  color: ${myColor.mainWhite};
 `;
 
 /* 스와이퍼 컨테이너 */
 const StyledSwiper = styled(Swiper)`
-  position: absolute;
-  left: 0;
   width: 100%;
   height: 66vh;
-  margin-top: 3rem;
+  margin-top: 4rem;
   color: ${myColor.mainWhite};
-`;
-
-/* 스와이퍼 버튼 */
-const StyledSwiperSlide = styled(SwiperSlide)`
-  position: relative;
-  z-index: 999;
-  transition-delay: 0.1s;
-  transition-duration: 1s;
-  color: ${myColor.mainWhite};
-
-  &:hover{
-    cursor: pointer;
-  }
 `;
 
 const Arrowswiper = ({ isLoading, movies }) => {
   SwiperCore.use([Navigation]);
 
   return (
-    <div>
-      <StyledSwiper navigation>
+    <Wrapper>
+      <StyledSwiper
+        navigation
+        slidesPerView={2}
+        spaceBetween={50}
+        centeredSlides
+        pagination={{
+          clickable: true,
+        }}
+        scrollbar={{ draggable: true, dragSize: 24 }}
+        onSlideChange={() => console.log("slide change")}
+        onSwiper={(swiper) => console.log(swiper)}
+      >
         {isLoading ? (
-          <StyledSwiperSlide>
+          <SwiperSlide>
             <div
               style={{
                 display: "flex",
@@ -50,11 +49,11 @@ const Arrowswiper = ({ isLoading, movies }) => {
             >
               <span>loading...</span>
             </div>
-          </StyledSwiperSlide>
+          </SwiperSlide>
         ) : (
-          <MoviesContainer>
+          <>
             {movies.map((movie) => (
-              <StyledSwiperSlide key={movie.id}>
+              <SwiperSlide key={movie.id}>
                 <Moviemain
                   year={movie.year}
                   title={movie.title}
@@ -62,12 +61,12 @@ const Arrowswiper = ({ isLoading, movies }) => {
                   poster={movie.medium_cover_image}
                   genres={movie.genres}
                 />
-              </StyledSwiperSlide>
+              </SwiperSlide>
             ))}
-          </MoviesContainer>
+          </>
         )}
       </StyledSwiper>
-    </div>
+    </Wrapper>
   );
 };
 

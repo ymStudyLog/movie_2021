@@ -35,46 +35,32 @@ const NewText = styled.p`
     `}
 `;
 
-const TextBox = styled.div`
+const InnerBox = styled.div`
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
   width: 70vw;
-  min-height: 9rem;
-`;
-
-const StyledForm = styled.form`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
   min-height: 8rem;
-  padding-top: 0.7rem;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Input = styled.input`
   text-align: left;
-  background-color: ${myColor.mainGray[8]};
-  color: ${myColor.mainWhite};
-  font-size: 15px;
-  padding: 0.5rem;
-  border: none;
-  border-radius: 4px;
   background-color: ${myColor.mainWhite};
-  size: 50; 
-  height: 3.6rem;
+  color: ${myColor.mainGray[8]};
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  line-height: 30px;
 
   &:focus {
     outline: none;
   }
-
-  & + & {
-    margin-top: 1rem;
-  }
 `;
-
 
 /* 기본 Home 페이지 - 로그인 이전 */
 
@@ -94,10 +80,6 @@ const HomePage = () => {
           <RiNetflixFill color={myColor.mainRed[0]} size={40} />
 
           <div>
-            {/* 한/영 변환 드롭다운 구현 예정 */}
-            <Button size={1} style={{ marginRight: "2rem" }}>
-              한/영 변환
-            </Button>
             <Link to="/login">
               <Button red size={1}>
                 로그인
@@ -110,42 +92,42 @@ const HomePage = () => {
       <Spacer />
 
       <StyledBody>
-        <NewText size={3} bold style={{ margin: "0", minWidth: "625px" }}>
-          영화와 시리즈를 무제한으로.
+        <NewText size={3} bold style={{ margin: "0" }}>
+          평점이 높은 영화부터 확인하세요.
         </NewText>
         <NewText
           size={1.6}
           style={{ maxWidth: "625px", margin: "1rem auto 0.7rem" }}
         >
-          다양한 디바이스에서 시청하세요. 언제든 해지하실 수 있습니다.
+          다양한 디바이스에서 사용하세요. 마음에 드는 영화는 북마크할 수
+          있습니다.
         </NewText>
 
-        <TextBox>
-          <StyledForm>
-            <NewText
-              size={1.2}
-              style={{ margin: "0", padding: "0 2.5rem 1.5rem" }}
-            >
-              시청할 준비가 되셨나요? 멤버십을 등록하거나 재시작하려면 이메일
-              주소를 입력하세요.
-            </NewText>
+        <InnerBox>
+          <NewText size={1.2} style={{ marginTop: "2rem" }}>
+            시작할 준비가 되셨나요? 멤버십을 등록하려면 이메일 주소를
+            입력하세요.
+          </NewText>
 
-            <div style={{ marginBottom: "0.5rem" }}>
-              <Input
-                name="username_home"
-                autoComplete="username_home"
-                placeholder="이메일 주소"
-              />
-              <Button red size={2}>
-                <Link to="/register">
-                  <div style={{ display: "flex", alignItems: "center" }}>
-                    시작하기 <RiArrowRightSLine />
-                  </div>
-                </Link>
-              </Button>
-            </div>
-          </StyledForm>
-        </TextBox>
+          <Wrapper>
+              <div style={{ display: "flex", justifyContent: "center " }}>
+                <Input
+                  type="email"
+                  name="username_home"
+                  autoComplete="username_home"
+                  placeholder="이메일 주소"
+                />
+                <Button red size={1.6} onClick={() => console.log("클릭")}>
+                  <Link to="/register">
+                    <div style={{ display: "flex", alignItems: "center" }}>
+                      시작하기 <RiArrowRightSLine />
+                    </div>
+                  </Link>
+                </Button>
+              </div>
+              <div>에러 표시</div>
+          </Wrapper>
+        </InnerBox>
       </StyledBody>
     </>
   );

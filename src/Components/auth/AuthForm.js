@@ -5,10 +5,6 @@ import myColor from "../../lib/styles/myColor";
 
 const AuthFormContainer = styled.div`
   width: 70%;
-`;
-
-const AuthFormSample = styled.div`
-  margin-top: 1rem;
   display: flex;
   flex-direction: column;
 `;
@@ -20,7 +16,7 @@ const StyledForm = styled.form`
 `;
 
 const Footer = styled.div`
-  margin-top: 2.5rem;
+  margin-top: 0.8rem;
   padding: 0 auto;
 `;
 
@@ -33,17 +29,11 @@ const ErrorMessage = styled.div`
 
 const TextBox = styled.p`
   text-align: center;
-  
+
   ${(props) =>
     props.size &&
     css`
       font-size: ${props.size}px;
-    `}
-
-  ${props =>
-    props.margin && 
-    css`
-      margin: 1rem;  
     `}
 `;
 
@@ -51,21 +41,15 @@ const BoldTextBox = styled(TextBox)`
   font-weight: bold;
 `;
 
-/*
- * 기본 스타일링된 회색 배경 인풋
- * props.white = background-color
- * props.size = size(width)
- * props.height = height
- */
-
-const Input = styled.input`
-  text-align: left;
-  background-color: ${myColor.mainGray[8]};
-  color: ${myColor.mainWhite};
+const AuthFormInput = styled.input`
   font-size: 15px;
   padding: 0.5rem;
   border: none;
   border-radius: 4px;
+  background-color: ${myColor.mainGray[8]};
+  color: ${myColor.mainWhite};
+  size: 40;
+  height: 55px;
 
   &:focus {
     outline: none;
@@ -74,32 +58,13 @@ const Input = styled.input`
   & + & {
     margin-top: 1rem;
   }
-
-  ${(props) =>
-    props.white &&
-    css`
-      background-color: ${myColor.mainWhite};
-    `}
-
-  ${(props) =>
-    props.size &&
-    css`
-      size: ${props.size};
-    `}
-    
-    ${(props) =>
-    props.height &&
-    css`
-      height: ${props.height}rem;
-    `}
 `;
 
-const AuthFormInput = styled(Input)`
-  size: 40;
-  height: 55px;
+const AuthFormButton = styled(Button)`
+  width: 100%;
+  padding: 1rem 0;
+  margin-top: 1rem;
 `;
-
-/* ------------------------------------ */
 
 /*
  * 회원가입/로그인 폼 컴포넌트
@@ -113,11 +78,11 @@ const typeMap = {
 
 const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   const text = typeMap[type];
+
   return (
     <AuthFormContainer>
-      <AuthFormSample>
+      <div>
         <BoldTextBox size={30}>{text}</BoldTextBox>
-
         <StyledForm onSubmit={onSubmit}>
           <AuthFormInput
             name="username"
@@ -144,17 +109,10 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
               value={form.passwordConfirm}
             />
           )}
-          <Button
-            size={1}
-            red
-            style={{ width: "100%", padding: "1rem 0", marginTop: "1rem" }}
-          >
-            {text}
-          </Button>
+          <AuthFormButton size={1}>{text}</AuthFormButton>
         </StyledForm>
         {error && <ErrorMessage>{error}</ErrorMessage>}
-      </AuthFormSample>
-
+      </div>
       <Footer>
         {type === "login" ? (
           <>
@@ -165,14 +123,12 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
           </>
         ) : (
           <BoldTextBox>
-            <Link to="login">로그인하러 가기</Link>
+            <Link to="/login">로그인하러 가기</Link>
           </BoldTextBox>
         )}
       </Footer>
     </AuthFormContainer>
   );
 };
-
-
 
 export default AuthForm;

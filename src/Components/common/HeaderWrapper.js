@@ -16,15 +16,22 @@ const StyledHeader = styled.div`
   justify-content: center;
   align-items: center;
 `;
+const HeaderWrapper = (props) => <StyledHeader {...props} />;
 
-/* header 공간을 차지해줄 빈 div */
-
+/* header 공간을 차지해서 body부분과 겹치지 않게 해주는 spacer */
 const EmptySpace = styled.div`
   height: 5rem;
 `;
+export const Spacer = (props) => <EmptySpace {...props} />;
 
-export const Spacer = (props) => <EmptySpace {...props}/>;
-
-const HeaderWrapper = (props) => <StyledHeader {...props} />;
+/* header에 들어갈 element가 배치될 div */
+const BoxInsideStyledHeader = styled.div`
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90vw;
+`;
+export const Header = (props) => <BoxInsideStyledHeader {...props} />;
 
 export default HeaderWrapper;

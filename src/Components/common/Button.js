@@ -1,10 +1,9 @@
 import styled, { css } from "styled-components";
 import myColor from "../../lib/styles/myColor";
 
-/* 
- * 기본 회색 버튼 컴포넌트 
- * props.size = font-size
- * props.red = background-color
+/*
+ * 기본 버튼 컴포넌트
+ * props.size = font-size(rem)
  */
 
 const StyledButton = styled.button`
@@ -14,21 +13,11 @@ const StyledButton = styled.button`
   outline: none;
   padding: 0.5rem 1rem;
   cursor: pointer;
-  z-index:10;
-
-  background: ${myColor.mainGray[7]};
+  z-index: 10;
+  background: ${myColor.mainRed[0]};
   &:hover {
-    background: ${myColor.mainGray[8]};
+    background: ${myColor.mainRed[1]};
   }
-
-  ${(props) =>
-    props.red &&
-    css`
-      background: ${myColor.mainRed[0]};
-      &:hover {
-        background: ${myColor.mainRed[1]};
-      }
-    `}
 
   ${(props) =>
     props.size &&

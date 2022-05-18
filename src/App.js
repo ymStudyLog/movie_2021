@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import MoviePage from "./pages/MoviePage";
 import UserPage from "./pages/UserPage";
+//import MoviePage2 from "./pages/MoviePage2";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Route component={RegisterPage} path="/register" />
       <Route component={MoviePage} path="/movie" />
       <Route component={UserPage} path="/mypage" />
+      {/*<Route component={MoviePage2} path="/test" />*/}
     </div>
   );
 };

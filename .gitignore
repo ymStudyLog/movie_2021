@@ -24,3 +24,9 @@ yarn-error.log*
 
 .env.*
 ldighekk23vhw010.pem
+
+# practice redux-thunk & redux-saga file
+MoviePage2.js
+Arrowswiper2.js
+movie.js
+movies.js

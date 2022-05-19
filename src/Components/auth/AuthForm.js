@@ -4,9 +4,13 @@ import styled, { css } from "styled-components";
 import myColor from "../../lib/styles/myColor";
 
 const AuthFormContainer = styled.div`
-  width: 70%;
+  width: 90%;
   display: flex;
   flex-direction: column;
+  
+  @media only screen and (min-width: 540px) {
+    width: 70%;
+  }
 `;
 
 const StyledForm = styled.form`

@@ -1,30 +1,39 @@
-/* 사진이랑 타이틀만 보여지고 그다음에 호버링이나 클릭시 디테일 보여지게 수정하기 */
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const MovieContainer = styled.div`
-  position: absolute;
-  height: 100vh;
+  display: flex;
+  align-items: flex-start;
 `;
 
 const StyledImg = styled.img`
-  float: left;
+  width: 200px;
+  height: auto;
 `;
 
 const StyledList = styled.ul`
   list-style: none;
+  font-size: 1.5rem;
+  padding: 0;
+`;
+
+const StyledBox = styled.div` 
+  height: 66vh;
+  margin-left: 0.6rem;
 `;
 
 const Moviemain = ({ title, year, summary, poster, genres }) => {
   return (
     <MovieContainer>
       <StyledImg src={poster} alt={title} title={title} />
-      <StyledList>
-        <li>{title}</li>
-        <li>{year}</li>
-        <li>{summary}</li>
-        <li>{genres}</li>
-      </StyledList>
+      <StyledBox>
+        <StyledList>
+          <li>Title: {title}</li>
+          <li>Year: {year}</li>
+          <li>Genres: {genres}</li>
+        </StyledList>
+        <div>{summary}</div>
+      </StyledBox>
     </MovieContainer>
   );
 };

@@ -1,19 +1,24 @@
 import React, { useState, useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import HeaderWrapper, {
   Spacer,
   Header,
 } from "../components/common/HeaderWrapper";
-import Button from "../components/common/Button";
+import Button, { ButtonText } from "../components/common/Button";
 import { RiNetflixFill, RiArrowRightSLine } from "react-icons/ri";
 import myColor from "../lib/styles/myColor";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "../../node_modules/react-redux/es/exports";
 
 const FirstText = styled.p`
   text-align: center;
   font-weight: bold;
   margin: 0;
   font-size: 3rem;
+  
+  @media only screen and (max-width:600px) {
+    font-size: 2.4rem;
+  }
 `;
 
 const SecondText = styled.p`
@@ -21,32 +26,43 @@ const SecondText = styled.p`
   font-size: 1.6rem;
   max-width: 625px;
   margin: 1rem auto 0.7rem;
+  
+  @media only screen and (max-width:600px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const ThirdText = styled.p`
   text-align: center;
   font-size: 1.2rem;
   margin-top: 2rem;
+
+  @media only screen and (max-width:600px) {
+    font-size: 1rem;
+  }
 `;
 
 const BodyWrapper = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  bottom: 2.5rem;
-  width: 70vw;
-  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin: 4rem auto;
+  min-height: 460px;
+
+  @media only screen and (min-width: 620px) {
+    max-width: 620px;
+    min-height: 500px;
+  }
+
+  @media only screen and (min-width: 870px) {
+    max-width: 780px;
+    min-height: 460px;
+  }
 `;
 
-const MainBody = styled.div`
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 70vw;
+const StyledBox = styled.div`
+  width: 100%;
   min-height: 8rem;
 `;
 
@@ -54,6 +70,13 @@ const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  
+  @media only screen and (max-width:600px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 `;
 
 const Input = styled.input`
@@ -67,24 +90,44 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
-`;
 
-const ButtonText = styled.div`
-  display: flex;
-  align-items: center;
+  @media only screen and (max-width:600px) {
+    width: 100%;
+  }
 `;
 
 const ErrorMessage = styled.div`
   color: orange;
   font-size: 0.725rem;
   margin-top: 0.5rem;
+
+  @media only screen and (max-width:600px) {
+    width: 100%;
+  }
 `;
 
-/* 
- * 기본 Home 페이지 - login 이전, logout 이후 
+const InputButton = styled(Button)`
+  border-radius: 0 !important;
+
+  @media only screen and (max-width:600px) {
+    width: 96%;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+  }
+`;
+
+const InputWrapper = styled.div`
+  @media only screen and (max-width:600px) {
+    width: 96%;
+  }
+`;
+
+/*
+ * 기본 Home 페이지 - login 이전, logout 이후
  */
 
-const HomePage = () => {
+const HomePage = ({ history }) => {
   const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState(null);
   const inputEl = useRef();
@@ -100,9 +143,9 @@ const HomePage = () => {
       setError("올바른 이메일을 입력하세요.");
       setUserEmail("");
       inputEl.current.focus();
-    }
-    else{
-      //회원가입 페이지 이동 + 아이디 리덕스 username에 저장
+    } else {
+      
+      history.push('/register');
     }
   };
 
@@ -127,16 +170,18 @@ const HomePage = () => {
           있습니다.
         </SecondText>
 
-        <MainBody>
+        <StyledBox>
           <ThirdText>
             시작할 준비가 되셨나요? 멤버십을 등록하려면 이메일 주소를
             입력하세요.
           </ThirdText>
 
           <FormWrapper>
-            <div>
+            <InputWrapper>
               <Input
                 type="text"
+                name="username"
+                autoComplete="username"
                 placeholder="이메일 주소"
                 ref={inputEl}
                 value={userEmail}
@@ -146,8 +191,8 @@ const HomePage = () => {
                 }}
               />
               {error && <ErrorMessage>{error}</ErrorMessage>}
-            </div>
-            <Button
+            </InputWrapper>
+            <InputButton
               size={1.6}
               onClick={() => {
                 onhandleClick();
@@ -156,12 +201,12 @@ const HomePage = () => {
               <ButtonText>
                 시작하기 <RiArrowRightSLine />
               </ButtonText>
-            </Button>
+            </InputButton>
           </FormWrapper>
-        </MainBody>
+        </StyledBox>
       </BodyWrapper>
     </>
   );
 };
 
-export default HomePage;
+export default withRouter(HomePage);

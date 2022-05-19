@@ -1,4 +1,3 @@
-/* HomePage, MoviePage, MyPage에서 로고 부분이나 똑같은 코드가 반복됨 -> 다 만들고 나서 리팩토링해와서 정리하기 */
 import styled from "styled-components";
 
 /*

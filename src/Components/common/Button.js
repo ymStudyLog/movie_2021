@@ -26,6 +26,13 @@ const StyledButton = styled.button`
     `}
 `;
 
+const ButtonTextAlign = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ButtonText = (props) => <ButtonTextAlign {...props} />;
+
 const Button = (props) => <StyledButton {...props} />;
 
 export default Button;

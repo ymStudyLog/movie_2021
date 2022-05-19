@@ -9,7 +9,7 @@ import myColor from "../../lib/styles/myColor";
 const Wrapper = styled.div`
   width: 100%;
   height: 66vh;
-  margin-top: 4rem;
+  margin-top: 5rem;
   color: ${myColor.mainWhite};
 `;
 
@@ -17,8 +17,14 @@ const Wrapper = styled.div`
 const StyledSwiper = styled(Swiper)`
   width: 100%;
   height: 66vh;
-  margin-top: 4rem;
+  margin-top: 5rem;
   color: ${myColor.mainWhite};
+`;
+
+const StyledBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Arrowswiper = ({ isLoading, movies }) => {
@@ -29,26 +35,19 @@ const Arrowswiper = ({ isLoading, movies }) => {
       <StyledSwiper
         navigation
         slidesPerView={2}
-        spaceBetween={50}
+        spaceBetween={100}
         centeredSlides
         pagination={{
           clickable: true,
         }}
         scrollbar={{ draggable: true, dragSize: 24 }}
         onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
       >
         {isLoading ? (
           <SwiperSlide>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <StyledBox>
               <span>loading...</span>
-            </div>
+            </StyledBox>
           </SwiperSlide>
         ) : (
           <>

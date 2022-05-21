@@ -44,10 +44,12 @@ const RegisterForm = ({ history }) => {
     dispatch(register({ username, password }));
   };
 
-  //컴포넌트 렌더링시 form 초기화
+  //컴포넌트 렌더링시 form 초기화(form.username 값이 있으면 초기화 하지 않음)
   useEffect(() => {
-    dispatch(initializeForm("register"));
-  }, [dispatch]);
+    if(!form.username) {
+      dispatch(initializeForm("register"));
+    }
+  }, [dispatch, form.username]);
 
   useEffect(()=>{
     if(authError) {

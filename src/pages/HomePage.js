@@ -8,7 +8,8 @@ import Button, { ButtonText } from "../components/common/Button";
 import { RiNetflixFill, RiArrowRightSLine } from "react-icons/ri";
 import myColor from "../lib/styles/myColor";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "../../node_modules/react-redux/es/exports";
+import { useDispatch } from "react-redux";
+import { changeInput } from "../modules/auth";
 
 const FirstText = styled.p`
   text-align: center;
@@ -130,7 +131,11 @@ const InputWrapper = styled.div`
 const HomePage = ({ history }) => {
   const [userEmail, setUserEmail] = useState("");
   const [error, setError] = useState(null);
+
+  const dispatch = useDispatch();
   const inputEl = useRef();
+  
+  //이메일 검증 정규식
   const emailRegExp =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
@@ -144,7 +149,13 @@ const HomePage = ({ history }) => {
       setUserEmail("");
       inputEl.current.focus();
     } else {
-      
+      dispatch(
+        changeInput({
+          form: "register",
+          key: "username",
+          value: userEmail,
+        })
+      )
       history.push('/register');
     }
   };

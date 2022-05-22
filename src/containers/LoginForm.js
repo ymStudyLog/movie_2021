@@ -39,8 +39,7 @@ const LoginForm = ({ history }) => {
 
   useEffect(()=>{
     if(authError) {
-      console.log('오류 발생');
-      console.log(authError);
+      console.log('오류 발생', authError);
       setError('로그인 실패 다시 시도하세요.');
       return;
     }

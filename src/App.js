@@ -10,7 +10,7 @@ import UserPage from "./pages/UserPage";
 const App = () => {
   return (
     <div className="routeHome">
-      <Route component={HomePage} path={['/@:username','/']} exact />
+      <Route component={HomePage} path="/" exact />
       <Route component={LoginPage} path="/login" />
       <Route component={RegisterPage} path="/register" />
       <Route component={MoviePage} path="/movie" />

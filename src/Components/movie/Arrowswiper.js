@@ -5,6 +5,7 @@ import SwiperCore, { Navigation } from "swiper";
 import styled from "styled-components";
 import Moviemain from "./Moviemain";
 import myColor from "../../lib/styles/myColor";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -25,9 +26,10 @@ const StyledBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 
-const Arrowswiper = ({ isLoading, movies }) => {
+const Arrowswiper = ({ isLoading, movies, user }) => {
   SwiperCore.use([Navigation]);
 
   return (
@@ -43,7 +45,7 @@ const Arrowswiper = ({ isLoading, movies }) => {
         scrollbar={{ draggable: true, dragSize: 24 }}
         onSlideChange={() => console.log("slide change")}
       >
-        {isLoading ? (
+        {user && isLoading ? (
           <SwiperSlide>
             <StyledBox>
               <span>loading...</span>
@@ -63,6 +65,14 @@ const Arrowswiper = ({ isLoading, movies }) => {
               </SwiperSlide>
             ))}
           </>
+        )}
+        {!user && (
+          <SwiperSlide>
+            <StyledBox>
+              <span>로그인 후에 이용하실 수 있습니다.</span>
+              <Link to="/login">로그인 하러 가기</Link>
+            </StyledBox>
+          </SwiperSlide>
         )}
       </StyledSwiper>
     </Wrapper>

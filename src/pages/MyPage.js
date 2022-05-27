@@ -11,7 +11,7 @@ import myColor from "../lib/styles/myColor";
 import { RiNetflixFill } from "react-icons/ri";
 import styled from "styled-components";
 import MovieForm from "../containers/MovieForm";
-import UserForm from "../containers/UserForm";
+//import UserForm from "../containers/UserForm";
 import BodyWrapper from "../components/common/BodyWrapper";
 
 const StyledBox = styled.div`

@@ -13,7 +13,6 @@ const StyledHeader = styled.div`
   justify-content: center;
   align-items: center;
 `;
-const HeaderWrapper = (props) => <StyledHeader {...props} />;
 
 /* headerWrapper안에 들어갈 element가 배치될 div */
 const BoxInsideStyledHeader = styled.div`
@@ -35,4 +34,5 @@ const EmptySpace = styled.div`
 `;
 export const Spacer = (props) => <EmptySpace {...props} />;
 
+const HeaderWrapper = (props) => <StyledHeader {...props} />;
 export default HeaderWrapper;

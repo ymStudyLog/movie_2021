@@ -1,9 +1,5 @@
 import React, { useState, useRef } from "react";
 import { Link, withRouter } from "react-router-dom";
-import HeaderWrapper, {
-  Spacer,
-  Header,
-} from "../components/common/HeaderWrapper";
 import Button, { ButtonText } from "../components/common/Button";
 import { RiNetflixFill, RiArrowRightSLine } from "react-icons/ri";
 import myColor from "../lib/styles/myColor";
@@ -11,6 +7,7 @@ import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { changeInput } from "../modules/auth";
 import BodyWrapper from "../components/common/BodyWrapper";
+import HeaderWrapper, { Header, Spacer } from "../components/common/HeaderWrapper";
 
 const FirstText = styled.p`
   text-align: center;
@@ -69,11 +66,11 @@ const Input = styled.input`
   line-height: 30px;
   width: 100%;
   color: ${myColor.mainGray[8]};
-  
+
   &:focus {
     outline: none;
   }
-  
+
   @media (min-width: 481px) and (max-width: 700px) {
     width: 55vw;
   }
@@ -82,7 +79,7 @@ const Input = styled.input`
     width: 25rem;
   }
 `;
-  
+
 const ErrorMessage = styled.div`
   color: orange;
   font-size: 0.725rem;
@@ -161,9 +158,10 @@ const HomePage = ({ history }) => {
       <BodyWrapper>
         <FirstText>실시간 평점순 영화를 확인하세요.</FirstText>
         <SecondText>
-          다양한 디바이스에서 사용하세요. 아래 시작하기 버튼을 누르면 이동합니다.
+          다양한 디바이스에서 사용하세요. 아래 시작하기 버튼을 누르면
+          이동합니다.
         </SecondText>
-        
+
         <StyledBox>
           <ThirdText>
             시작할 준비가 되셨나요? 멤버십을 등록하려면 이메일 주소를

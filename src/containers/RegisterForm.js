@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeInput, initializeForm, register } from "../modules/auth";
 import AuthForm from "../components/auth/AuthForm";
-import { check } from '../modules/user';
 import { withRouter } from "../../node_modules/react-router-dom/index";
 
 const RegisterForm = ({ history }) => {

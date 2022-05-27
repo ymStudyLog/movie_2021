@@ -23,7 +23,7 @@ const Template = styled.div`
 
 const TemplateWrapper = styled.div`
   margin-top: 5rem;
-  
+
   @media only screen and (min-width: 540px) {
     max-width: 500px;
     min-height: 100vh;
@@ -36,11 +36,9 @@ const AuthTemplate = ({ children }) => {
   return (
     <>
       <HeaderWrapper>
-        <div>
-          <Link to="/">
-            <RiNetflixFill color={myColor.mainRed[0]} size={55} />
-          </Link>
-        </div>
+        <Link to="/">
+          <RiNetflixFill color={myColor.mainRed[0]} size={55} />
+        </Link>
       </HeaderWrapper>
 
       <div>

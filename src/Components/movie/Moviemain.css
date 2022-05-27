@@ -1,0 +1,27 @@
+/* 카드 뒤집히는 이펙트 css */
+.container{
+    perspective: 300px;
+}
+
+.container .item{
+    backface-visibility: hidden;
+    transition: 1s;
+}
+
+.container .item.front-face{
+    position: absolute;
+    transform: rotateY(0deg);
+}
+
+.container:hover .item.front-face {
+    transform: rotateY(180deg);
+}
+
+.container .item.back-face{
+    transform: rotateY(-180deg);
+}
+
+.container:hover .item.back-face{
+    transform: rotateY(0deg);
+    cursor: pointer;
+}

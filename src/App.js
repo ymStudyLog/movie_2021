@@ -3,9 +3,7 @@ import { Route } from 'react-router-dom'
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import MoviePage from "./pages/MoviePage";
-import UserPage from "./pages/UserPage";
-//import MoviePage2 from "./pages/MoviePage2";
+import MyPage from "./pages/MyPage";
 
 const App = () => {
   return (
@@ -13,9 +11,7 @@ const App = () => {
       <Route component={HomePage} path="/" exact />
       <Route component={LoginPage} path="/login" />
       <Route component={RegisterPage} path="/register" />
-      <Route component={MoviePage} path="/movie" />
-      <Route component={UserPage} path="/mypage" />
-      {/*<Route component={MoviePage2} path="/test" />*/}
+      <Route component={MyPage} path="/mypage" />
     </div>
   );
 };

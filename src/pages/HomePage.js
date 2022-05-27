@@ -10,14 +10,15 @@ import myColor from "../lib/styles/myColor";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { changeInput } from "../modules/auth";
+import BodyWrapper from "../components/common/BodyWrapper";
 
 const FirstText = styled.p`
   text-align: center;
   font-weight: bold;
   margin: 0;
   font-size: 3rem;
-  
-  @media only screen and (max-width:600px) {
+
+  @media (max-width: 600px) {
     font-size: 2.4rem;
   }
 `;
@@ -27,8 +28,8 @@ const SecondText = styled.p`
   font-size: 1.6rem;
   max-width: 625px;
   margin: 1rem auto 0.7rem;
-  
-  @media only screen and (max-width:600px) {
+
+  @media (max-width: 600px) {
     font-size: 1.3rem;
   }
 `;
@@ -38,27 +39,8 @@ const ThirdText = styled.p`
   font-size: 1.2rem;
   margin-top: 2rem;
 
-  @media only screen and (max-width:600px) {
+  @media (max-width: 600px) {
     font-size: 1rem;
-  }
-`;
-
-const BodyWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin: 4rem auto;
-  min-height: 460px;
-
-  @media only screen and (min-width: 620px) {
-    max-width: 620px;
-    min-height: 500px;
-  }
-
-  @media only screen and (min-width: 870px) {
-    max-width: 780px;
-    min-height: 460px;
   }
 `;
 
@@ -71,8 +53,8 @@ const FormWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  
-  @media only screen and (max-width:600px) {
+
+  @media (max-width: 480px) {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -85,24 +67,28 @@ const Input = styled.input`
   padding: 10px;
   border: none;
   line-height: 30px;
-  width: 25rem;
+  width: 100%;
   color: ${myColor.mainGray[8]};
-
+  
   &:focus {
     outline: none;
   }
+  
+  @media (min-width: 481px) and (max-width: 700px) {
+    width: 55vw;
+  }
 
-  @media only screen and (max-width:600px) {
-    width: 100%;
+  @media (min-width: 701px) {
+    width: 25rem;
   }
 `;
-
+  
 const ErrorMessage = styled.div`
   color: orange;
   font-size: 0.725rem;
   margin-top: 0.5rem;
 
-  @media only screen and (max-width:600px) {
+  @media (max-width: 480px) {
     width: 100%;
   }
 `;
@@ -110,7 +96,7 @@ const ErrorMessage = styled.div`
 const InputButton = styled(Button)`
   border-radius: 0 !important;
 
-  @media only screen and (max-width:600px) {
+  @media (max-width: 480px) {
     width: 96%;
     display: flex;
     justify-content: center;
@@ -119,7 +105,7 @@ const InputButton = styled(Button)`
 `;
 
 const InputWrapper = styled.div`
-  @media only screen and (max-width:600px) {
+  @media (max-width: 480px) {
     width: 96%;
   }
 `;
@@ -134,7 +120,7 @@ const HomePage = ({ history }) => {
 
   const dispatch = useDispatch();
   const inputEl = useRef();
-  
+
   //이메일 검증 정규식
   const emailRegExp =
     /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
@@ -155,8 +141,8 @@ const HomePage = ({ history }) => {
           key: "username",
           value: userEmail,
         })
-      )
-      history.push('/register');
+      );
+      history.push("/register");
     }
   };
 
@@ -165,28 +151,24 @@ const HomePage = ({ history }) => {
       <HeaderWrapper>
         <Header>
           <RiNetflixFill color={myColor.mainRed[0]} size={40} />
-          <div>
-            <Link to="/login">
-              <Button size={1}>로그인</Button>
-            </Link>
-          </div>
+          <Link to="/login">
+            <Button size={1}>로그인</Button>
+          </Link>
         </Header>
       </HeaderWrapper>
       <Spacer />
 
       <BodyWrapper>
-        <FirstText>평점이 높은 영화부터 확인하세요.</FirstText>
+        <FirstText>실시간 평점순 영화를 확인하세요.</FirstText>
         <SecondText>
-          다양한 디바이스에서 사용하세요. 마음에 드는 영화는 북마크할 수
-          있습니다.
+          다양한 디바이스에서 사용하세요. 아래 시작하기 버튼을 누르면 이동합니다.
         </SecondText>
-
+        
         <StyledBox>
           <ThirdText>
             시작할 준비가 되셨나요? 멤버십을 등록하려면 이메일 주소를
             입력하세요.
           </ThirdText>
-
           <FormWrapper>
             <InputWrapper>
               <Input

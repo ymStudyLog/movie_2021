@@ -11,6 +11,8 @@ const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] =
   createRequestActionType("auth/REGISTER");
 const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] =
   createRequestActionType("auth/LOGIN");
+const [MODIFY_PASSWORD, MODIFY_PASSWORD_SUCCESS, MODIFY_PASSWORD_FAILURE] = 
+  createRequestActionType("auth/MODIFY_PASSWORD");
 
 export const changeInput = createAction(
   CHANGE_INPUT,
@@ -33,12 +35,16 @@ export const login = createAction(LOGIN, ({ username, password })=>({
   password,
 }));
 
+export const modify = createAction(MODIFY_PASSWORD, password => password);
+
 //사가 생성 
 const registerSaga = createSaga(REGISTER, authAPI.register);
 const loginSaga = createSaga(LOGIN, authAPI.login);
+const modifySaga = createSaga(MODIFY_PASSWORD, authAPI.modify);
 export function* authSaga() {
   yield takeLatest(REGISTER, registerSaga);
   yield takeLatest(LOGIN, loginSaga);
+  yield takeLatest(MODIFY_PASSWORD, modifySaga);
 }
 
 const initialState = {
@@ -53,6 +59,7 @@ const initialState = {
   },
   auth:null,
   authError:null,
+  switchError:null,
 };
 
 const auth = handleActions(
@@ -75,7 +82,7 @@ const auth = handleActions(
       ...state,
       authError:error,
     }),
-    [LOGIN_SUCCESS]: (state, { payload: auth}) => ({
+    [LOGIN_SUCCESS]: (state, { payload: auth }) => ({
       ...state,
       authError:null,
       auth,
@@ -84,6 +91,15 @@ const auth = handleActions(
       ...state,
       authError:error,
     }),
+    [MODIFY_PASSWORD_SUCCESS] : (state, { payload: auth }) => ({
+      ...state,
+      switchError: null,
+      auth,
+    }),
+    [MODIFY_PASSWORD_FAILURE] : (state, { payload: error }) => ({
+      ...state,
+      switchError:error,
+    })
   },
   initialState
 );

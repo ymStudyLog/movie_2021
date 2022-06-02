@@ -20,7 +20,7 @@ function checkUser() {
     store.dispatch(tempLoggedIn(JSON.parse(user))); 
     store.dispatch(check()); //로그인 되어있으면 user 저장
   } catch(e) {
-    console.log("localStorage 오류");
+    console.log("localStorage is not working");
   } 
 }
 

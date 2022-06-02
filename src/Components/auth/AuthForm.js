@@ -3,7 +3,7 @@ import Button from "../common/Button";
 import styled, { css } from "styled-components";
 import myColor from "../../lib/styles/myColor";
 
-const AuthFormContainer = styled.div`
+export const AuthFormContainer = styled.div`
   width: 90%;
   display: flex;
   flex-direction: column;
@@ -13,25 +13,25 @@ const AuthFormContainer = styled.div`
   }
 `;
 
-const StyledForm = styled.form`
+export const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 1.5rem 0;
 `;
 
-const Footer = styled.div`
+export const Footer = styled.div`
   margin-top: 0.8rem;
   padding: 0 auto;
 `;
 
-const ErrorMessage = styled.div`
+export const ErrorMessage = styled.div`
   color: orange;
   text-align: center;
   font-size: 0.725rem;
   margin-top: 0.8rem;
 `;
 
-const TextBox = styled.p`
+export const TextBox = styled.p`
   text-align: center;
 
   ${(props) =>
@@ -41,11 +41,11 @@ const TextBox = styled.p`
     `}
 `;
 
-const BoldTextBox = styled(TextBox)`
+export const BoldTextBox = styled(TextBox)`
   font-weight: bold;
 `;
 
-const AuthFormInput = styled.input`
+export const AuthFormInput = styled.input`
   font-size: 15px;
   padding: 0.5rem;
   border: none;
@@ -64,7 +64,7 @@ const AuthFormInput = styled.input`
   }
 `;
 
-const AuthFormButton = styled(Button)`
+export const AuthFormButton = styled(Button)`
   width: 100%;
   padding: 1rem 0;
   margin-top: 1rem;

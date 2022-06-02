@@ -11,3 +11,9 @@ export const check = () => client.get('/api/auth/check');
 
 //로그아웃
 export const logout = () => client.post('/api/auth/logout');
+
+//비밀번호 변경
+export const modify = ({ password }) => client.post('/api/auth/modify', { password });
+
+//회원 탈퇴
+export const withdrawal = () => client.post('/api/auth/withdrawal');

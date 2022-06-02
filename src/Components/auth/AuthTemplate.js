@@ -32,13 +32,17 @@ const TemplateWrapper = styled.div`
   }
 `;
 
-const AuthTemplate = ({ children }) => {
+const AuthTemplate = ({ children, noClick }) => {
   return (
     <>
       <HeaderWrapper>
-        <Link to="/">
+        {noClick ? (
           <RiNetflixFill color={myColor.mainRed[0]} size={55} />
-        </Link>
+        ) : (
+          <Link to="/">
+            <RiNetflixFill color={myColor.mainRed[0]} size={55} />
+          </Link>
+        )}
       </HeaderWrapper>
 
       <div>

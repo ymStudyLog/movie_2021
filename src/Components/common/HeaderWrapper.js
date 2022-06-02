@@ -20,8 +20,8 @@ const BoxInsideStyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 97vw;
-
+  width: 80vw;
+  
   @media (min-width: 480px) {
     width: 90vw;
     padding: 0.25rem;

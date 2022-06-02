@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { withRouter, Link } from "react-router-dom";
 import { logout } from "../modules/user";
@@ -11,7 +11,6 @@ import myColor from "../lib/styles/myColor";
 import { RiNetflixFill } from "react-icons/ri";
 import styled from "styled-components";
 import MovieForm from "../containers/MovieForm";
-//import UserForm from "../containers/UserForm";
 import BodyWrapper from "../components/common/BodyWrapper";
 
 const StyledBox = styled.div`
@@ -20,7 +19,6 @@ const StyledBox = styled.div`
 `;
 
 const UserInfo = styled.div`
-  cursor: pointer;
   font-weight: 600;
   margin-right: 0.4rem;
 
@@ -29,12 +27,17 @@ const UserInfo = styled.div`
   }
 `;
 
-const MyPage = ({ history }) => {
+const MoviePageButton = styled(Button)`
+   @media (max-width: 480px) {
+     font-size: 0.7rem !important;
+  }
+`;
+
+const MoviePage = ({ history }) => {
   const dispatch = useDispatch();
   const { user } = useSelector(({ user }) => ({
     user: user.user,
   }));
-  const [mypage, setMypage] = useState(false);
 
   /* 새로고침하면 로그인 정보 날아가는것 수정하기 
 -> 새로고침하면 localStorage와 cookie 살아있는데 modules/user의 user가 날아감 
@@ -70,16 +73,12 @@ const MyPage = ({ history }) => {
             </StyledBox>
           ) : (
             <StyledBox>
-              <UserInfo
-                onClick={() => {
-                  setMypage(!mypage);
-                }}
-              >
-                {user.username}
-              </UserInfo>
-              <Button size={1} onClick={onLogout}>
+              <Link to="/mypage">
+                <UserInfo>{user.username}</UserInfo>
+              </Link>
+              <MoviePageButton size={1} onClick={onLogout}>
                 로그아웃
-              </Button>
+              </MoviePageButton>
             </StyledBox>
           )}
         </Header>
@@ -91,9 +90,9 @@ const MyPage = ({ history }) => {
           <span>로그인 후에 이용하실 수 있습니다.</span>
         </BodyWrapper>
       )}
-      {user && (mypage ? <BodyWrapper><span>구현 전</span></BodyWrapper> : <MovieForm />)}
+      {user && <MovieForm />}
     </div>
   );
 };
 
-export default withRouter(MyPage);
+export default withRouter(MoviePage);

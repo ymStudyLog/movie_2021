@@ -7,11 +7,10 @@ import { withRouter } from "../../node_modules/react-router-dom/index";
 const RegisterForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-  const { form, auth, authError, user } = useSelector(({ auth, user }) => ({
+  const { form, auth, authError } = useSelector(({ auth }) => ({
     form: auth.register,
     auth: auth.auth,
     authError: auth.authError,
-    user: user.user,
   }));
 
   const onChange = (e) => {
@@ -62,7 +61,7 @@ const RegisterForm = ({ history }) => {
       return;
     }
     if(auth){
-      console.log('회원가입 성공');
+      console.log('Register success');
       history.push('/login');
     }
   }, [auth, authError, history]);

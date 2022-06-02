@@ -39,23 +39,23 @@ const LoginForm = ({ history }) => {
 
   useEffect(()=>{
     if(authError) {
-      console.log('오류 발생', authError);
+      console.log('Authoriaztion failed', authError);
       setError('로그인 실패 다시 시도하세요.');
       return;
     }
     if(auth) {
-      console.log('로그인 성공');
+      console.log('Login success');
       dispatch(check());
     }
   }, [auth, authError, dispatch]);
 
   useEffect(()=>{
     if(user) {
-      history.push('/mypage');
+      history.push('/movie');
       try{
         localStorage.setItem('user', JSON.stringify(user));
       } catch(e) {
-        console.log('localStorage 오류');
+        console.log('localStorage is not working');
       }
     }
   },[history, user]);

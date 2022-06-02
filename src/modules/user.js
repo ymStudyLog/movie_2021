@@ -8,10 +8,12 @@ const [CHECK, CHECK_SUCCESS, CHECK_FAILURE] = createRequestActionType(
     'user/CHECK',
 );
 const LOGOUT = 'user/LOGOUT';
+const WITHDRAWAL = 'user/WITHDRAWAL';
 
 export const tempLoggedIn = createAction(TEMP_LOGGEDIN, user=>user);
 export const check = createAction(CHECK);
 export const logout = createAction(LOGOUT);
+export const withdrawal = createAction(WITHDRAWAL);
 
 const checkSaga = createSaga(CHECK, authAPI.check);
 
@@ -19,7 +21,7 @@ function checkFailureSaga() {
     try {
         localStorage.removeItem('user');
     } catch(e) {
-        console.log('localStorage 오류');
+        console.log('localStorage is not working');
     }
 }
 
@@ -32,10 +34,21 @@ function* logoutSaga() {
     }
 }
 
+function* withdrawalSaga() {
+    try{
+        yield call(authAPI.withdrawal);
+        localStorage.removeItem('user');
+        console.log('Successfully withdrew');
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 export function* userSaga() {
     yield takeLatest(CHECK, checkSaga);
     yield takeLatest(CHECK_FAILURE, checkFailureSaga);
     yield takeLatest(LOGOUT, logoutSaga);
+    yield takeLatest(WITHDRAWAL, withdrawalSaga);
 }
 
 
@@ -64,6 +77,10 @@ export default handleActions(
             ...state,
             user:null,
         }),
+        [WITHDRAWAL] : state => ({
+            ...state,
+            user:null,
+        })
     },
     initialState,
 );

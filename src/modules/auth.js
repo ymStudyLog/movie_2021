@@ -23,7 +23,7 @@ export const changeInput = createAction(
   })
 );
 
-export const initializeForm = createAction(INITIALIZE_FORM, (form) => form); //register 혹은 login
+export const initializeForm = createAction(INITIALIZE_FORM, form => form); //register 혹은 login
 
 export const register = createAction(REGISTER, ({ username, password })=>({
   username,
@@ -59,6 +59,7 @@ const initialState = {
   },
   auth:null,
   authError:null,
+  switchAuth:null,
   switchError:null,
 };
 
@@ -71,7 +72,9 @@ const auth = handleActions(
     [INITIALIZE_FORM]: (state, { payload: form }) => ({
       ...state,
       [form]: initialState[form], //빈 폼으로 덮어씀
-      authError: null,
+      authError: null, //모든 다른 state 값들도 초기화
+      switchAuth: null,
+      switchError: null,    
     }),
     [REGISTER_SUCCESS]: (state, { payload: auth }) => ({
       ...state,
@@ -91,10 +94,10 @@ const auth = handleActions(
       ...state,
       authError:error,
     }),
-    [MODIFY_PASSWORD_SUCCESS] : (state, { payload: auth }) => ({
+    [MODIFY_PASSWORD_SUCCESS] : (state) => ({
       ...state,
-      switchError: null,
-      auth,
+      switchError:null,
+      switchAuth:true,
     }),
     [MODIFY_PASSWORD_FAILURE] : (state, { payload: error }) => ({
       ...state,

@@ -28,11 +28,11 @@ const WithdrawalButton = styled(AuthFormButton)`
 const UserForm = ({ history }) => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
-  const { user, form, auth, switchError } = useSelector(({ user, auth }) => ({
+  const { user, form, switchError, switchAuth } = useSelector(({ user, auth }) => ({
     user: user.user,
     form: auth.register,
-    auth: auth.auth,
     switchError: auth.switchError,
+    switchAuth: auth.switchAuth,
   }));
 
   const onWithdrawal = () => {
@@ -73,7 +73,6 @@ const UserForm = ({ history }) => {
       );
       return;
     }
-    console.log(form);
     dispatch(modify({ password }));
   };
 
@@ -87,11 +86,11 @@ const UserForm = ({ history }) => {
       setError("비밀번호 변경 실패");
       return;
     }
-    if (auth) {
+    if (switchAuth) {
       console.log("Modify success");
-      history.push("/movie");
+      setError("비밀번호 변경 성공");
     }
-  }, [auth, switchError]);
+  }, [switchError, switchAuth]);
 
   return (
     <AuthFormContainer>

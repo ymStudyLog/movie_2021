@@ -94,10 +94,10 @@ const auth = handleActions(
       ...state,
       authError:error,
     }),
-    [MODIFY_PASSWORD_SUCCESS] : (state) => ({
+    [MODIFY_PASSWORD_SUCCESS] : (state, { payload: auth }) => ({
       ...state,
       switchError:null,
-      switchAuth:true,
+      switchAuth:auth,
     }),
     [MODIFY_PASSWORD_FAILURE] : (state, { payload: error }) => ({
       ...state,

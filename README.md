@@ -29,22 +29,26 @@ Node.js & MongoDB를 사용한 백엔드를 클론 코딩하여, 회원가입 �
 
 ## 프로젝트 목표
 
-1. 첫번째 | 기존에 아무 인증없이 보여주던 영화 정보를 :point_right: 로그인 성공시 볼 수 있도록 영화 데이터를 디스플레이하는 기능을 따로 빼서 MoviePage 컴포넌트로 만든다.
-2. 두번째 | MoviePage에서 사용자 개인 페이지로 가는 링크를 만든다. :point_right: UserPage 컴포넌트를 만들어 라우트 연결한다.
-3. 세번쨰 | 비밀번호 변경(modify)과 회원 탈퇴(withdrawal) 기능을 추가해본다. :point_right: 백엔드 프로젝트에 해당 기능에 대한 api를 추가, 각 api에 대한 미들웨어 함수도 auth.ctrl.js에 작성한다. :point_right: 해당 작업에 대한 요청을 처리하는 기능을 프론트의 모듈에 추가한다.
-4. 네번째 | 다 만들어진 정상 작동하는 풀스택 프로젝트를 AWS EC2 서비스를 통해 배포한다.
+1. 기존에 아무 인증없이 보여주던 영화 정보를 :point_right: 로그인 성공시 볼 수 있도록 영화 데이터를 디스플레이하는 기능을 따로 빼서 MoviePage 컴포넌트로 만든다.
+2. MoviePage에서 사용자 개인 페이지로 가는 링크를 만든다. :point_right: UserPage 컴포넌트를 만들어 라우트 연결한다.
+3. 비밀번호 변경(modify)과 회원 탈퇴(withdrawal) 기능을 추가해본다. :point_right: 백엔드 프로젝트에 해당 기능에 대한 api를 추가, 각 api에 대한 미들웨어 함수도 auth.ctrl.js에 작성한다. :point_right: 해당 작업에 대한 요청을 처리하는 기능을 프론트의 모듈에 추가한다.
+4. 다 만들어진 정상 작동하는 풀스택 프로젝트를 AWS EC2 서비스를 통해 배포한다.
 
 ## 프로젝트 실적
 
-[1.](#첫번째)
+[1.목표](#프로젝트-목표)
 
 - MoviePage
   - useEffect hooks를 사용하여 localStorage의 로그인 정보를 확인하고 없으면 LoginPage로 유도한다.
   - 로그인 정보가 확인되면 body 섹션에 MovieForm을 렌더링한다.
 - MovieForm - loading 상태는 만들어둔 loading 리덕스 모듈을 활용한다. 영화 데이터는 useState() hooks를 사용하여 movies 상태에 저장한다. :point_right: 이 두 값은 Arrowswiper 컴포넌트에 props로 전달한다. - movies 상태를 저장하는 getMovies()함수는 MovieForm 컴포넌트가 렌더링되면 실행하도록 useEffect() hooks를 사용한다. - getMovies()에서는 영화 데이터를 axios로 가져오고, 필요한 영화 데이터만(id, title, year, summary, medium_cover_image, genres) 갈무리한다. 날 것의 영화 데이터는 2차원 배열이기 때문에 for/of 문을 사용하여 각각의 배열 요소에 대해 새로운 Object 객체를 만들어 push()로 모은다.
-  [2.](#두번째)
+ 
+ [2.목표](#프로젝트-목표)
+ 
 - MoviePage - localStorage의 로그인 정보가 확인되면 유저의 아이디를 로그아웃 버튼 옆에 보여준다. - react-router-dom의 withRouter를 사용하여 MoviePage 컴포넌트에서 history 값을 사용하게 한다. 유저 아이디를 클릭하면 UserPage로 이동한다.
-  [3.](#세번째)
+  
+ [3.목표](#프로젝트-목표)
+ 
 - UserPage
   - localStorage 로그인 정보가 없으면 LoginPage로 유도한다.
   - 로그인 정보가 있으면 UserForm 컴포넌트를 렌더링한다.
@@ -60,16 +64,16 @@ Node.js & MongoDB를 사용한 백엔드를 클론 코딩하여, 회원가입 �
 - backend
   - auth.ctrl.js : modify()와 withdrawal() 미들웨어를 만든다. modify()는 기존 미들웨어에서 사용한 메서드들로 구현하였고, withdrawal()는 Model.prototype.deleteOne()을 사용해서 구현했다.
 
-[4.](#네번째)
+[4.목표](#프로젝트-목표)
 
 - AWS EC2로 인스턴스를 생성하고, 인스턴스에서 프로젝트를 배포하는 모든 과정은 구글링으로 정보를 얻었다. 입문으로 ubuntu 서버가 좋을 것 같아서 ubuntu 18.04 버전으로 인스턴스를 생성했다.
 
 ## 프로젝트 평가
 
-1. 첫번째 | 기존에 아무 인증없이 보여주던 영화 정보를 :point_right: 로그인 성공시 볼 수 있도록 영화 데이터를 디스플레이하는 기능을 따로 빼서 MoviePage 컴포넌트로 만든다. **3점/5점 만점**
-2. 두번째 | MoviePage에서 사용자 개인 페이지로 가는 링크를 만든다. :point_right: UserPage 컴포넌트를 만들어 라우트 연결한다. **4.5점/5점 만점**
-3. 세번쨰 | 비밀번호 변경(modify)과 회원 탈퇴(withdrawal) 기능을 추가해본다. :point_right: 백엔드 프로젝트에 해당 기능에 대한 api를 추가, 각 api에 대한 미들웨어 함수도 auth.ctrl.js에 작성한다. :point_right: 해당 작업에 대한 요청을 처리하는 기능을 프론트의 모듈에 추가한다. **3점/5점 만점**
-4. 네번째 | 다 만들어진 정상 작동하는 풀스택 프로젝트를 AWS EC2 서비스를 통해 배포한다. **2.5점/5점 만점**
+1. 기존에 아무 인증없이 보여주던 영화 정보를 :point_right: 로그인 성공시 볼 수 있도록 영화 데이터를 디스플레이하는 기능을 따로 빼서 MoviePage 컴포넌트로 만든다. **3점/5점 만점**
+2. MoviePage에서 사용자 개인 페이지로 가는 링크를 만든다. :point_right: UserPage 컴포넌트를 만들어 라우트 연결한다. **4.5점/5점 만점**
+3. 비밀번호 변경(modify)과 회원 탈퇴(withdrawal) 기능을 추가해본다. :point_right: 백엔드 프로젝트에 해당 기능에 대한 api를 추가, 각 api에 대한 미들웨어 함수도 auth.ctrl.js에 작성한다. :point_right: 해당 작업에 대한 요청을 처리하는 기능을 프론트의 모듈에 추가한다. **3점/5점 만점**
+4. 다 만들어진 정상 작동하는 풀스택 프로젝트를 AWS EC2 서비스를 통해 배포한다. **2.5점/5점 만점**
 
 - 목표 달성률 평균 : **3.25점/5점 만점**
 
